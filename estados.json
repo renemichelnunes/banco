@@ -1,0 +1,359 @@
+[
+    {
+        "id_uf": 1,
+        "sigla_uf": "AL",
+        "state_code" : "US-AL",
+        "nome_uf": "Alabama",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 2,
+        "sigla_uf": "AK",
+        "state_code" : "US-AK",
+        "nome_uf": "Alaska",
+        "id_regiao": 2
+    },
+    {
+        "id_uf": 4,
+        "sigla_uf": "AZ",
+        "state_code" : "US-AZ",
+        "nome_uf": "Arizona",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 5,
+        "sigla_uf": "AR",
+        "state_code" : "US-AR",
+        "nome_uf": "Arkansas",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 6,
+        "sigla_uf": "CA",
+        "state_code" : "US-CA",
+        "nome_uf": "California",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 8,
+        "sigla_uf": "CO",
+        "state_code" : "US-CO",
+        "nome_uf": "Colorado",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 9,
+        "sigla_uf": "CT",
+        "state_code" : "US-CT",
+        "nome_uf": "Connecticut",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 10,
+        "sigla_uf": "DE",
+        "state_code" : "US-DE",
+        "nome_uf": "Delaware",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 11,
+        "sigla_uf": "DC",
+        "state_code" : "US-DC",
+        "nome_uf": "Washington, D.C. District of Columbia",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 12,
+        "sigla_uf": "FL",
+        "state_code" : "US-FL",
+        "nome_uf": "Florida",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 13,
+        "sigla_uf": "GA",
+        "state_code" : "US-GA",
+        "nome_uf": "Georgia",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 15,
+        "sigla_uf": "HI",
+        "state_code" : "US-HI",
+        "nome_uf": "Hawaii",
+        "id_regiao": 2
+    },
+    {
+        "id_uf": 16,
+        "sigla_uf": "ID",
+        "state_code" : "US-ID",
+        "nome_uf": "Idaho",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 17,
+        "sigla_uf": "IL",
+        "state_code" : "US-IL",
+        "nome_uf": "Illinois",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 18,
+        "sigla_uf": "IN",
+        "state_code" : "US-IN",
+        "nome_uf": "Indiana",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 19,
+        "sigla_uf": "IA",
+        "state_code" : "US-IA",
+        "nome_uf": "Iowa",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 20,
+        "sigla_uf": "KS",
+        "state_code" : "US-KS",
+        "nome_uf": "Kansas",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 21,
+        "sigla_uf": "KY",
+        "state_code" : "US-KY",
+        "nome_uf": "Kentucky",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 22,
+        "sigla_uf": "LA",
+        "state_code" : "US-LA",
+        "nome_uf": "Louisiana",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 23,
+        "sigla_uf": "ME",
+        "state_code" : "US-ME",
+        "nome_uf": "Maine",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 24,
+        "sigla_uf": "MD",
+        "state_code" : "US-MD",
+        "nome_uf": "Maryland",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 25,
+        "sigla_uf": "MA",
+        "state_code" : "US-MA",
+        "nome_uf": "Massachusetts",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 26,
+        "sigla_uf": "MI",
+        "state_code" : "US-MI",
+        "nome_uf": "Michigan",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 27,
+        "sigla_uf": "MN",
+        "state_code" : "US-MN",
+        "nome_uf": "Minnesota",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 28,
+        "sigla_uf": "MS",
+        "state_code" : "US-MS",
+        "nome_uf": "Mississippi",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 29,
+        "sigla_uf": "MO",
+        "state_code" : "US-MO",
+        "nome_uf": "Missouri",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 30,
+        "sigla_uf": "MT",
+        "state_code" : "US-MT",
+        "nome_uf": "Montana",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 31,
+        "sigla_uf": "NE",
+        "state_code" : "US-NE",
+        "nome_uf": "Nebraska",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 32,
+        "sigla_uf": "NV",
+        "state_code" : "US-NV",
+        "nome_uf": "Nevada",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 33,
+        "sigla_uf": "NH",
+        "state_code" : "US-NH",
+        "nome_uf": "New Hampshire",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 34,
+        "sigla_uf": "NJ",
+        "state_code" : "US-NJ",
+        "nome_uf": "New Jersey",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 35,
+        "sigla_uf": "NM",
+        "state_code" : "US-NM",
+        "nome_uf": "New Mexico",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 36,
+        "sigla_uf": "NY",
+        "state_code" : "US-NY",
+        "nome_uf": "New York",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 37,
+        "sigla_uf": "NC",
+        "state_code" : "US-NC",
+        "nome_uf": "North Carolina",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 38,
+        "sigla_uf": "ND",
+        "state_code" : "US-ND",
+        "nome_uf": "North Dakota",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 39,
+        "sigla_uf": "OH",
+        "state_code" : "US-OH",
+        "nome_uf": "Ohio",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 40,
+        "sigla_uf": "OK",
+        "state_code" : "US-OK",
+        "nome_uf": "Oklahoma",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 41,
+        "sigla_uf": "OR",
+        "state_code" : "US-OR",
+        "nome_uf": "Oregon",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 42,
+        "sigla_uf": "PA",
+        "state_code" : "US-PA",
+        "nome_uf": "Pennsylvania",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 44,
+        "sigla_uf": "RI",
+        "state_code" : "US-RI",
+        "nome_uf": "Rhode Island",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 45,
+        "sigla_uf": "SC",
+        "state_code" : "US-SC",
+        "nome_uf": "South Carolina",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 46,
+        "sigla_uf": "SD",
+        "state_code" : "US-SD",
+        "nome_uf": "South Dakota",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 47,
+        "sigla_uf": "TN",
+        "state_code" : "US-TN",
+        "nome_uf": "Tennessee",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 48,
+        "sigla_uf": "TX",
+        "state_code" : "US-TX",
+        "nome_uf": "Texas",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 49,
+        "sigla_uf": "UT",
+        "state_code" : "US-UT",
+        "nome_uf": "Utah",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 50,
+        "sigla_uf": "VT",
+        "state_code" : "US-VT",
+        "nome_uf": "Vermont",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 51,
+        "sigla_uf": "VA",
+        "state_code" : "US-VA",
+        "nome_uf": "Virginia",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 53,
+        "sigla_uf": "WA",
+        "state_code" : "US-WA",
+        "nome_uf": "Washington",
+        "id_regiao": 3
+    },
+    {
+        "id_uf": 54,
+        "sigla_uf": "WV",
+        "state_code" : "US-WV",
+        "nome_uf": "West Virginia",
+        "id_regiao": 1
+    },
+    {
+        "id_uf": 55,
+        "sigla_uf": "WI",
+        "state_code" : "US-WI",
+        "nome_uf": "Wisconsin",
+        "id_regiao": 4
+    },
+    {
+        "id_uf": 56,
+        "sigla_uf": "WY",
+        "state_code" : "US-WY",
+        "nome_uf": "Wyoming",
+        "id_regiao": 3
+    }
+]

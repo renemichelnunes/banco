@@ -1,0 +1,22 @@
+[
+    {
+        "id_regiao": 1,
+        "sigla_regiao": "SO",
+        "nome_regiao": "South"
+    },
+    {
+        "id_regiao": 2,
+        "sigla_regiao": "NO",
+        "nome_regiao": "North"
+    },
+    {
+        "id_regiao": 3,
+        "sigla_regiao": "O",
+        "nome_regiao": "West"
+    },
+    {
+        "id_regiao": 4,
+        "sigla_regiao": "NE",
+        "nome_regiao": "Northeast"
+    }
+]
