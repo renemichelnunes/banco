@@ -645,11 +645,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Table sales_items</from>
-      <to>Copy sales_items</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>JSON regions</from>
       <to>upper region_name</to>
       <enabled>Y</enabled>
@@ -725,23 +720,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge 4</from>
-      <to>Merge 6</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by product_id</from>
-      <to>Merge 6</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Merge 6</from>
       <to>Select values sales_items</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Copy sales_items</from>
-      <to>calculate sub_total</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -835,11 +815,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge 2</from>
-      <to>Sort by sales_id 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>calculate sub_total</from>
       <to>calculate total_price</to>
       <enabled>Y</enabled>
@@ -855,28 +830,93 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge 10</from>
-      <to>update dim_states</to>
+      <from>Merge 2</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Sort by sales_id 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge 4</from>
+      <to>Select values 8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 8</from>
+      <to>Merge 6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Table sales_items</from>
+      <to>calculate sub_total</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort by product_id</from>
+      <to>Select values 9</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 9</from>
+      <to>Merge 6</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 5</from>
-      <to>update dim_sellers</to>
+      <to>Select values 10</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge 5</from>
+      <to>sort by seller_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 10</from>
+      <to>sort by seller_id 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sort by seller_id</from>
+      <to>Multiway merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sort by seller_id 2</from>
+      <to>Multiway merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 4</from>
-      <to>update dim_customers</to>
+      <to>sort by customer_id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 3</from>
-      <to>update dim_suppliers</to>
+      <from>Multiway merge join</from>
+      <to>sort by customer_id 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>upper product_name</from>
-      <to>update dim_products</to>
+      <from>sort by customer_id</from>
+      <to>Multiway merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sort by customer_id 2</from>
+      <to>Multiway merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Multiway merge join 2</from>
+      <to>Select values 11</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 11</from>
+      <to>update fato_sales_items</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -885,13 +925,33 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>upper product_name</from>
+      <to>update dim_products</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>calculate quarter</from>
       <to>update dim_date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge 5</from>
-      <to>update fato_sales_items</to>
+      <from>Select values 3</from>
+      <to>update dim_suppliers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4</from>
+      <to>update dim_customers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 5</from>
+      <to>update dim_sellers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge 10</from>
+      <to>update dim_states</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -952,31 +1012,6 @@
     <GUI>
       <xloc>480</xloc>
       <yloc>800</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Copy sales_items</name>
-    <type>RowsToResult</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1435,8 +1470,8 @@
       <schema_name/>
     </partitioning>
     <join_type>INNER</join_type>
-    <step0>Merge 4</step0>
-    <step1>Sort by product_id</step1>
+    <step0>Select values 8</step0>
+    <step1>Select values 9</step1>
     <number_input>2</number_input>
     <keys>
       <key>product_id</key>
@@ -1460,7 +1495,7 @@
     <name>Merge 7</name>
     <type>MultiwayMergeJoin</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1596,6 +1631,49 @@
     </GUI>
   </step>
   <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>sales_id</name>
+      </field>
+      <field>
+        <name>customer_id</name>
+      </field>
+      <field>
+        <name>seller_id</name>
+      </field>
+      <field>
+        <name>total_price</name>
+      </field>
+      <field>
+        <name>date_id</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Select values 1</name>
     <type>SelectValues</type>
     <description/>
@@ -1653,7 +1731,7 @@
     <name>Select values 3</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1676,7 +1754,7 @@
       <select_unspecified>N</select_unspecified>
       <meta>
         <name>state_id</name>
-        <rename>state_id</rename>
+        <rename>supplier_state_id</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -1710,7 +1788,7 @@
     <name>Select values 4</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1733,7 +1811,7 @@
       <select_unspecified>N</select_unspecified>
       <meta>
         <name>state_id</name>
-        <rename>state_id</rename>
+        <rename>customer_state_id</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -1767,7 +1845,7 @@
     <name>Select values 5</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1777,23 +1855,28 @@
     <fields>
       <field>
         <name>seller_id</name>
+        <rename/>
       </field>
       <field>
         <name>seller_name</name>
+        <rename/>
       </field>
       <field>
         <name>email</name>
+        <rename/>
       </field>
       <field>
         <name>tx_commission</name>
+        <rename/>
       </field>
       <field>
         <name>state_id</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
         <name>state_id</name>
-        <rename>state_id</rename>
+        <rename>seller_state_id</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -1955,6 +2038,104 @@
     </GUI>
   </step>
   <step>
+    <name>Select values 8</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>category_id</name>
+      </field>
+      <field>
+        <name>category_name</name>
+      </field>
+      <field>
+        <name>product_id</name>
+      </field>
+      <field>
+        <name>product_name</name>
+      </field>
+      <field>
+        <name>price</name>
+      </field>
+      <field>
+        <name>supplier_id</name>
+      </field>
+      <field>
+        <name>supplier_name</name>
+      </field>
+      <field>
+        <name>email</name>
+      </field>
+      <field>
+        <name>supplier_state_id</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 9</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>item_id</name>
+      </field>
+      <field>
+        <name>sales_id</name>
+      </field>
+      <field>
+        <name>product_id</name>
+      </field>
+      <field>
+        <name>quantity</name>
+      </field>
+      <field>
+        <name>sub_total</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Select values sales_items</name>
     <type>SelectValues</type>
     <description/>
@@ -1970,9 +2151,6 @@
         <name>product_id</name>
       </field>
       <field>
-        <name>product_name</name>
-      </field>
-      <field>
         <name>price</name>
         <rename>product_price</rename>
       </field>
@@ -1980,20 +2158,10 @@
         <name>supplier_id</name>
       </field>
       <field>
-        <name>supplier_name</name>
+        <name>supplier_state_id</name>
       </field>
       <field>
-        <name>state_id</name>
-      </field>
-      <field>
-        <name>category_id_1</name>
-        <rename>category_id</rename>
-      </field>
-      <field>
-        <name>category_name</name>
-      </field>
-      <field>
-        <name>item_id</name>
+        <name>category_id</name>
       </field>
       <field>
         <name>sales_id</name>
@@ -2002,7 +2170,7 @@
         <name>quantity</name>
       </field>
       <field>
-        <name>price_1</name>
+        <name>price</name>
         <rename>sell_price</rename>
       </field>
       <field>
@@ -2330,7 +2498,7 @@
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>272</yloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4042,7 +4210,7 @@ var date_alt = parseInt(date)</jsScript_script>
     <name>upper category_name</name>
     <type>StringOperations</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -4082,7 +4250,7 @@ var date_alt = parseInt(date)</jsScript_script>
     <name>upper product_name</name>
     <type>StringOperations</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -4437,8 +4605,362 @@ var date_alt = parseInt(date)</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>update dim_states</name>
-    <type>SynchronizeAfterMerge</type>
+    <name>Select values 10</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>seller_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>seller_state_id</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1248</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Multiway merge join</name>
+    <type>MultiwayMergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step0>sort by seller_id</step0>
+    <step1>sort by seller_id 2</step1>
+    <number_input>2</number_input>
+    <keys>
+      <key>seller_id</key>
+      <key>seller_id</key>
+    </keys>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>sort by seller_id</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>seller_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1248</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>sort by seller_id 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>seller_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1248</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>sort by customer_id</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>customer_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1248</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>sort by customer_id 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>customer_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Multiway merge join 2</name>
+    <type>MultiwayMergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step0>sort by customer_id</step0>
+    <step1>sort by customer_id 2</step1>
+    <number_input>2</number_input>
+    <keys>
+      <key>customer_id</key>
+      <key>customer_id</key>
+    </keys>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>608</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 11</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>sales_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>product_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>date_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>customer_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>customer_state_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>seller_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>seller_state_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>supplier_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>supplier_state_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>category_id</name>
+        <rename/>
+      </field>
+      <field>
+        <name>quantity</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sell_price</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sub_total</name>
+        <rename/>
+      </field>
+      <field>
+        <name>total_price</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>update fato_sales_items</name>
+    <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -4449,14 +4971,660 @@ var date_alt = parseInt(date)</jsScript_script>
     </partitioning>
     <connection>FatorV Gestão</connection>
     <commit>100</commit>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <use_batch>N</use_batch>
-    <perform_lookup>N</perform_lookup>
-    <operation_order_field>region_id</operation_order_field>
-    <order_insert/>
-    <order_update/>
-    <order_delete/>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>fato_sales_items</table>
+      <key>
+        <name>sales_id</name>
+        <field>sales_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>product_id</name>
+        <field>product_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>date_id</name>
+        <field>date_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>customer_id</name>
+        <field>customer_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>customer_state_id</name>
+        <field>customer_state_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>seller_id</name>
+        <field>seller_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>seller_state_id</name>
+        <field>seller_state_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>supplier_id</name>
+        <field>supplier_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>supplier_state_id</name>
+        <field>supplier_state_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>category_id</name>
+        <field>category_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>quantity</name>
+        <field>quantity</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>sell_price</name>
+        <field>sell_price</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>sub_total</name>
+        <field>sub_total</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>total_price</name>
+        <field>total_price</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>sales_id</name>
+        <rename>sales_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>product_id</name>
+        <rename>product_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>date_id</name>
+        <rename>date_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>customer_id</name>
+        <rename>customer_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>customer_state_id</name>
+        <rename>customer_state_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>seller_id</name>
+        <rename>seller_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>seller_state_id</name>
+        <rename>seller_state_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>supplier_id</name>
+        <rename>supplier_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>supplier_state_id</name>
+        <rename>supplier_state_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>category_id</name>
+        <rename>category_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>quantity</name>
+        <rename>quantity</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>sell_price</name>
+        <rename>sell_price</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>sub_total</name>
+        <rename>sub_total</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>total_price</name>
+        <rename>total_price</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>update dim_categories</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>FatorV Gestão</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_categories</table>
+      <key>
+        <name>category_id</name>
+        <field>category_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>category_name</name>
+        <field>category_name</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>category_id</name>
+        <rename>category_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>category_name</name>
+        <rename>category_name</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>update dim_products</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>FatorV Gestão</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_products</table>
+      <key>
+        <name>product_id</name>
+        <field>product_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>product_name</name>
+        <field>product_name</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>price</name>
+        <field>price</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>product_id</name>
+        <rename>product_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>product_name</name>
+        <rename>product_name</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>price</name>
+        <rename>price</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>update dim_date</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>FatorV Gestão</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_date</table>
+      <key>
+        <name>year</name>
+        <field>year</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>month</name>
+        <field>month</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>day</name>
+        <field>day</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>date</name>
+        <field>date</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>date_id</name>
+        <field>date_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>quarter</name>
+        <field>quarter</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>month_name</name>
+        <field>month_name</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>year</name>
+        <rename>year</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>month</name>
+        <rename>month</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>day</name>
+        <rename>day</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>date</name>
+        <rename>date</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>date_id</name>
+        <rename>date_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>quarter</name>
+        <rename>quarter</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>month_name</name>
+        <rename>month_name</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>update dim_suppliers</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>FatorV Gestão</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_suppliers</table>
+      <key>
+        <name>supplier_id</name>
+        <field>supplier_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>supplier_name</name>
+        <field>supplier_name</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>email</name>
+        <field>email</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>supplier_state_id</name>
+        <field>supplier_state_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>supplier_id</name>
+        <rename>supplier_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>supplier_name</name>
+        <rename>supplier_name</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>email</name>
+        <rename>email</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>supplier_state_id</name>
+        <rename>supplier_state_id</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>update dim_customers</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>FatorV Gestão</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_customers</table>
+      <key>
+        <name>customer_id</name>
+        <field>customer_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>customer_name</name>
+        <field>customer_name</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>email</name>
+        <field>email</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>customer_state_id</name>
+        <field>customer_state_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>customer_id</name>
+        <rename>customer_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>customer_name</name>
+        <rename>customer_name</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>email</name>
+        <rename>email</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>customer_state_id</name>
+        <rename>customer_state_id</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>update dim_sellers</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>FatorV Gestão</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_sellers</table>
+      <key>
+        <name>seller_id</name>
+        <field>seller_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>seller_name</name>
+        <field>seller_name</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>email</name>
+        <field>email</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>tx_commission</name>
+        <field>tx_commission</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>seller_state_id</name>
+        <field>seller_state_id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>seller_id</name>
+        <rename>seller_id</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>seller_name</name>
+        <rename>seller_name</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>email</name>
+        <rename>email</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>tx_commission</name>
+        <rename>tx_commission</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>seller_state_id</name>
+        <rename>seller_state_id</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>1024</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>update dim_states</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>FatorV Gestão</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
     <lookup>
       <schema>public</schema>
       <table>dim_states</table>
@@ -4549,708 +5717,6 @@ var date_alt = parseInt(date)</jsScript_script>
     <GUI>
       <xloc>848</xloc>
       <yloc>1120</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>update dim_sellers</name>
-    <type>SynchronizeAfterMerge</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>FatorV Gestão</connection>
-    <commit>100</commit>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <use_batch>N</use_batch>
-    <perform_lookup>N</perform_lookup>
-    <operation_order_field>seller_id</operation_order_field>
-    <order_insert/>
-    <order_update/>
-    <order_delete/>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_sellers</table>
-      <key>
-        <name>seller_id</name>
-        <field>seller_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>seller_name</name>
-        <field>seller_name</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>email</name>
-        <field>email</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>tx_commission</name>
-        <field>tx_commission</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>state_id</name>
-        <field>state_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>seller_id</name>
-        <rename>seller_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>seller_name</name>
-        <rename>seller_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>email</name>
-        <rename>email</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>tx_commission</name>
-        <rename>tx_commission</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>state_id</name>
-        <rename>state_id</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>1024</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>update dim_customers</name>
-    <type>SynchronizeAfterMerge</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>FatorV Gestão</connection>
-    <commit>100</commit>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <use_batch>N</use_batch>
-    <perform_lookup>N</perform_lookup>
-    <operation_order_field>customer_id</operation_order_field>
-    <order_insert/>
-    <order_update/>
-    <order_delete/>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_customers</table>
-      <key>
-        <name>customer_id</name>
-        <field>customer_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>customer_name</name>
-        <field>customer_name</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>email</name>
-        <field>email</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>state_id</name>
-        <field>state_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>customer_id</name>
-        <rename>customer_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>customer_name</name>
-        <rename>customer_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>email</name>
-        <rename>email</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>state_id</name>
-        <rename>state_id</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
-      <yloc>800</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>update dim_suppliers</name>
-    <type>SynchronizeAfterMerge</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>FatorV Gestão</connection>
-    <commit>100</commit>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <use_batch>N</use_batch>
-    <perform_lookup>N</perform_lookup>
-    <operation_order_field>supplier_id</operation_order_field>
-    <order_insert/>
-    <order_update/>
-    <order_delete/>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_suppliers</table>
-      <key>
-        <name>supplier_id</name>
-        <field>supplier_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>supplier_name</name>
-        <field>supplier_name</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>email</name>
-        <field>email</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>state_id</name>
-        <field>state_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>supplier_id</name>
-        <rename>supplier_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>supplier_name</name>
-        <rename>supplier_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>email</name>
-        <rename>email</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>state_id</name>
-        <rename>state_id</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>update dim_products</name>
-    <type>SynchronizeAfterMerge</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>FatorV Gestão</connection>
-    <commit>100</commit>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <use_batch>N</use_batch>
-    <perform_lookup>N</perform_lookup>
-    <operation_order_field>product_id</operation_order_field>
-    <order_insert/>
-    <order_update/>
-    <order_delete/>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_products</table>
-      <key>
-        <name>product_id</name>
-        <field>product_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>product_name</name>
-        <field>product_name</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>category_id</name>
-        <field>category_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>price</name>
-        <field>price</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>supplier_id</name>
-        <field>supplier_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>product_id</name>
-        <rename>product_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_name</name>
-        <rename>product_name</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>category_id</name>
-        <rename>category_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>price</name>
-        <rename>price</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>supplier_id</name>
-        <rename>supplier_id</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>update dim_categories</name>
-    <type>SynchronizeAfterMerge</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>FatorV Gestão</connection>
-    <commit>100</commit>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <use_batch>N</use_batch>
-    <perform_lookup>N</perform_lookup>
-    <operation_order_field>category_id</operation_order_field>
-    <order_insert/>
-    <order_update/>
-    <order_delete/>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_categories</table>
-      <key>
-        <name>category_id</name>
-        <field>category_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>category_name</name>
-        <field>category_name</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>category_id</name>
-        <rename>category_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>category_name</name>
-        <rename>category_name</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>update dim_date</name>
-    <type>SynchronizeAfterMerge</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>FatorV Gestão</connection>
-    <commit>100</commit>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <use_batch>N</use_batch>
-    <perform_lookup>N</perform_lookup>
-    <operation_order_field>date_id</operation_order_field>
-    <order_insert/>
-    <order_update/>
-    <order_delete/>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_date</table>
-      <key>
-        <name>year</name>
-        <field>year</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>month</name>
-        <field>month</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>day</name>
-        <field>day</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>date</name>
-        <field>date</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>date_id</name>
-        <field>date_id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>quarter</name>
-        <field>quarter</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>month_name</name>
-        <field>month_name</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>year</name>
-        <rename>year</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>month</name>
-        <rename>month</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>day</name>
-        <rename>day</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>date</name>
-        <rename>date</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>date_id</name>
-        <rename>date_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>quarter</name>
-        <rename>quarter</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>month_name</name>
-        <rename>month_name</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1408</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>update fato_sales_items</name>
-    <type>SynchronizeAfterMerge</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>FatorV Gestão</connection>
-    <commit>100</commit>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <use_batch>N</use_batch>
-    <perform_lookup>N</perform_lookup>
-    <operation_order_field>sales_id</operation_order_field>
-    <order_insert/>
-    <order_update/>
-    <order_delete/>
-    <lookup>
-      <schema>public</schema>
-      <table>fato_sales_items</table>
-      <key>
-        <name>sales_id</name>
-        <field>sales_id</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>customer_id</name>
-        <field>customer_id</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>seller_id</name>
-        <field>seller_id</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>total_price</name>
-        <field>total_price</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>date_id</name>
-        <field>date_id</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>product_id</name>
-        <field>product_id</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>supplier_id</name>
-        <field>supplier_id</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>state_id</name>
-        <field>state_id</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>category_id</name>
-        <field>category_id</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>quantity</name>
-        <field>quantity</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>sell_price</name>
-        <field>sell_price</field>
-        <condition/>
-        <name2/>
-      </key>
-      <key>
-        <name>sub_total</name>
-        <field>sub_total</field>
-        <condition/>
-        <name2/>
-      </key>
-      <value>
-        <name>sales_id</name>
-        <rename>state_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>customer_id</name>
-        <rename>customer_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>seller_id</name>
-        <rename>seller_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>total_price</name>
-        <rename>total_price</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>date_id</name>
-        <rename>date_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>product_id</name>
-        <rename>product_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>supplier_id</name>
-        <rename>supplier_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>state_id</name>
-        <rename>state_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>category_id</name>
-        <rename>category_id</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>quantity</name>
-        <rename>quantity</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>sell_price</name>
-        <rename>sell_price</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>sub_total</name>
-        <rename>sub_total</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1280</xloc>
-      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
